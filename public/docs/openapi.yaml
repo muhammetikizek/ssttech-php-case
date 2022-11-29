@@ -1,0 +1,541 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/heartbeat:
+    get:
+      summary: ''
+      operationId: getApiHeartbeat
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  version: 9.41.0
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  version:
+                    type: string
+                    example: 9.41.0
+      tags:
+        - Endpoints
+      security: []
+  /api/contacts:
+    get:
+      summary: ''
+      operationId: getApiContacts
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  data:
+                    -
+                      uuid: ea8ec3fb-541a-451e-a9bb-54089a1ecf02
+                      name: Taylor
+                      last_name: Otwell
+                      company: Laravel
+                      photo: 'https://pbs.twimg.com/profile_images/1526762722565709824/avx6Gyol_400x400.jpg'
+                      created_at: '2022-11-29T09:02:24.000000Z'
+                      updated_at: '2022-11-29T09:02:24.000000Z'
+                    -
+                      uuid: dc36adb3-fa74-42a7-a59a-f87edea5b4ee
+                      name: Jeffrey
+                      last_name: Way
+                      company: Laracast
+                      photo: 'https://pbs.twimg.com/profile_images/1179539487086514177/cl6UdqIS_400x400.jpg'
+                      created_at: '2022-11-29T09:02:24.000000Z'
+                      updated_at: '2022-11-29T09:02:24.000000Z'
+                    -
+                      uuid: 5531ab81-0b9f-4fa1-a362-b297839d2cf0
+                      name: Muhammet
+                      last_name: İkizek
+                      company: Ssttech
+                      photo: 'http://localhost:8000/photo/Kbe6KvGUM6kqf9BPhiS8ZwGxTVmoxGwg8JYG3WAv.jpg'
+                      created_at: '2022-11-29T09:02:24.000000Z'
+                      updated_at: '2022-11-29T09:02:24.000000Z'
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  data:
+                    type: array
+                    example:
+                      -
+                        uuid: ea8ec3fb-541a-451e-a9bb-54089a1ecf02
+                        name: Taylor
+                        last_name: Otwell
+                        company: Laravel
+                        photo: 'https://pbs.twimg.com/profile_images/1526762722565709824/avx6Gyol_400x400.jpg'
+                        created_at: '2022-11-29T09:02:24.000000Z'
+                        updated_at: '2022-11-29T09:02:24.000000Z'
+                      -
+                        uuid: dc36adb3-fa74-42a7-a59a-f87edea5b4ee
+                        name: Jeffrey
+                        last_name: Way
+                        company: Laracast
+                        photo: 'https://pbs.twimg.com/profile_images/1179539487086514177/cl6UdqIS_400x400.jpg'
+                        created_at: '2022-11-29T09:02:24.000000Z'
+                        updated_at: '2022-11-29T09:02:24.000000Z'
+                      -
+                        uuid: 5531ab81-0b9f-4fa1-a362-b297839d2cf0
+                        name: Muhammet
+                        last_name: İkizek
+                        company: Ssttech
+                        photo: 'http://localhost:8000/photo/Kbe6KvGUM6kqf9BPhiS8ZwGxTVmoxGwg8JYG3WAv.jpg'
+                        created_at: '2022-11-29T09:02:24.000000Z'
+                        updated_at: '2022-11-29T09:02:24.000000Z'
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiContacts
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 3 characters.'
+                  example: juoxdqdpduzrppmjeqdjdtlsbmfxxjxprkjgmirrwnvbnlka
+                photo:
+                  type: string
+                  format: binary
+                  description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+              required:
+                - name
+                - photo
+      security: []
+  /api/contacts/getByLocation:
+    get:
+      summary: ''
+      operationId: getApiContactsGetByLocation
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  data:
+                    -
+                      İstanbul/Çekmeköy:
+                        -
+                          name: Taylor
+                          last_name: Otwell
+                    -
+                      İstanbul/Kadıköy:
+                        -
+                          name: Jeffrey
+                          last_name: Way
+                    -
+                      İstanbul/Üsküdar:
+                        -
+                          name: Muhammet
+                          last_name: İkizek
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  data:
+                    type: array
+                    example:
+                      -
+                        İstanbul/Çekmeköy:
+                          -
+                            name: Taylor
+                            last_name: Otwell
+                      -
+                        İstanbul/Kadıköy:
+                          -
+                            name: Jeffrey
+                            last_name: Way
+                      -
+                        İstanbul/Üsküdar:
+                          -
+                            name: Muhammet
+                            last_name: İkizek
+                    items:
+                      type: object
+      tags:
+        - Endpoints
+      security: []
+  /api/contacts/getLocationInfoReport:
+    get:
+      summary: ''
+      operationId: getApiContactsGetLocationInfoReport
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  data:
+                    '2':
+                      İstanbul/Üsküdar:
+                        contact_count: 1
+                        phone_number_count: 1
+                    '1':
+                      İstanbul/Kadıköy:
+                        contact_count: 1
+                        phone_number_count: 1
+                    '0':
+                      İstanbul/Çekmeköy:
+                        contact_count: 1
+                        phone_number_count: 1
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  data:
+                    type: object
+                    example:
+                      '2':
+                        İstanbul/Üsküdar:
+                          contact_count: 1
+                          phone_number_count: 1
+                      '1':
+                        İstanbul/Kadıköy:
+                          contact_count: 1
+                          phone_number_count: 1
+                      '0':
+                        İstanbul/Çekmeköy:
+                          contact_count: 1
+                          phone_number_count: 1
+      tags:
+        - Endpoints
+      security: []
+  '/api/contacts/{id}':
+    get:
+      summary: ''
+      operationId: getApiContactsId
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: 200
+                  data:
+                    uuid: ea8ec3fb-541a-451e-a9bb-54089a1ecf02
+                    name: Taylor
+                    last_name: Otwell
+                    company: Laravel
+                    photo: 'https://pbs.twimg.com/profile_images/1526762722565709824/avx6Gyol_400x400.jpg'
+                    created_at: '2022-11-29T09:02:24.000000Z'
+                    updated_at: '2022-11-29T09:02:24.000000Z'
+                    information:
+                      phone_number: '05431332491'
+                      email_address: taylor@mail.com
+                      location: İstanbul/Çekmeköy
+                      content: null
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  data:
+                    type: object
+                    example:
+                      uuid: ea8ec3fb-541a-451e-a9bb-54089a1ecf02
+                      name: Taylor
+                      last_name: Otwell
+                      company: Laravel
+                      photo: 'https://pbs.twimg.com/profile_images/1526762722565709824/avx6Gyol_400x400.jpg'
+                      created_at: '2022-11-29T09:02:24.000000Z'
+                      updated_at: '2022-11-29T09:02:24.000000Z'
+                      information:
+                        phone_number: '05431332491'
+                        email_address: taylor@mail.com
+                        location: İstanbul/Çekmeköy
+                        content: null
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiContactsId
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: multipart/form-data
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 3 characters.'
+                  example: zttvsfkozbsldfrqcgjrjztrdxhpmrjxnppuqbciredgpfyocveaxuuwntpsfvtlxggwmcbwcrwxpducmkyphk
+                photo:
+                  type: string
+                  format: binary
+                  description: 'Must be an image. Must not be greater than 2048 kilobytes.'
+              required:
+                - name
+                - photo
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiContactsId
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the contact.'
+        example: ea8ec3fb-541a-451e-a9bb-54089a1ecf02
+        required: true
+        schema:
+          type: string
+  '/api/contacts/{id}/info/add':
+    post:
+      summary: ''
+      operationId: postApiContactsIdInfoAdd
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone_number:
+                  type: string
+                  description: ''
+                  example: quia
+                email_address:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: csatterfield@example.net
+              required:
+                - phone_number
+                - email_address
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the contact.'
+        example: ea8ec3fb-541a-451e-a9bb-54089a1ecf02
+        required: true
+        schema:
+          type: string
+  '/api/contact/info/{id}':
+    delete:
+      summary: ''
+      operationId: deleteApiContactInfoId
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the info.'
+        example: dolorem
+        required: true
+        schema:
+          type: string
+tags:
+  -
+    name: Endpoints
+    description: ''

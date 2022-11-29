@@ -1,0 +1,1484 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Laravel Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var baseUrl = "http://localhost";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-4.7.1.js"></script>
+
+    <script src="../docs/js/theme-default-4.7.1.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                    <ul id="tocify-header-introduction" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="introduction">
+                    <a href="#introduction">Introduction</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-requests">
+                    <a href="#authenticating-requests">Authenticating requests</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-endpoints" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-heartbeat">
+                                <a href="#endpoints-GETapi-heartbeat">GET api/heartbeat</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-contacts">
+                                <a href="#endpoints-GETapi-contacts">GET api/contacts</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-contacts-getByLocation">
+                                <a href="#endpoints-GETapi-contacts-getByLocation">GET api/contacts/getByLocation</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-contacts-getLocationInfoReport">
+                                <a href="#endpoints-GETapi-contacts-getLocationInfoReport">GET api/contacts/getLocationInfoReport</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-contacts">
+                                <a href="#endpoints-POSTapi-contacts">POST api/contacts</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-contacts--id-">
+                                <a href="#endpoints-GETapi-contacts--id-">GET api/contacts/{id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-contacts--id-">
+                                <a href="#endpoints-PUTapi-contacts--id-">PUT api/contacts/{id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-contacts--id-">
+                                <a href="#endpoints-DELETEapi-contacts--id-">DELETE api/contacts/{id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-contacts--id--info-add">
+                                <a href="#endpoints-POSTapi-contacts--id--info-add">POST api/contacts/{id}/info/add</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-contact-info--id-">
+                                <a href="#endpoints-DELETEapi-contact-info--id-">DELETE api/contact/info/{id}</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+            </div>
+
+    <ul class="toc-footer" id="toc-footer">
+                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+    </ul>
+
+    <ul class="toc-footer" id="last-updated">
+        <li>Last updated: November 29, 2022</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<aside>
+    <strong>Base URL</strong>: <code>http://localhost</code>
+</aside>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-GETapi-heartbeat">GET api/heartbeat</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-heartbeat">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/heartbeat" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/heartbeat"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-heartbeat">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: true,
+    &quot;version&quot;: &quot;9.41.0&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-heartbeat" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-heartbeat"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-heartbeat" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-heartbeat" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-heartbeat"></code></pre>
+</span>
+<form id="form-GETapi-heartbeat" data-method="GET"
+      data-path="api/heartbeat"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-heartbeat', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-heartbeat"
+                    onclick="tryItOut('GETapi-heartbeat');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-heartbeat"
+                    onclick="cancelTryOut('GETapi-heartbeat');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-heartbeat" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/heartbeat</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-heartbeat"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-heartbeat"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-contacts">GET api/contacts</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-contacts">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/contacts" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/contacts"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-contacts">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 58
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: 200,
+    &quot;data&quot;: [
+        {
+            &quot;uuid&quot;: &quot;ea8ec3fb-541a-451e-a9bb-54089a1ecf02&quot;,
+            &quot;name&quot;: &quot;Taylor&quot;,
+            &quot;last_name&quot;: &quot;Otwell&quot;,
+            &quot;company&quot;: &quot;Laravel&quot;,
+            &quot;photo&quot;: &quot;https://pbs.twimg.com/profile_images/1526762722565709824/avx6Gyol_400x400.jpg&quot;,
+            &quot;created_at&quot;: &quot;2022-11-29T09:02:24.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-11-29T09:02:24.000000Z&quot;
+        },
+        {
+            &quot;uuid&quot;: &quot;dc36adb3-fa74-42a7-a59a-f87edea5b4ee&quot;,
+            &quot;name&quot;: &quot;Jeffrey&quot;,
+            &quot;last_name&quot;: &quot;Way&quot;,
+            &quot;company&quot;: &quot;Laracast&quot;,
+            &quot;photo&quot;: &quot;https://pbs.twimg.com/profile_images/1179539487086514177/cl6UdqIS_400x400.jpg&quot;,
+            &quot;created_at&quot;: &quot;2022-11-29T09:02:24.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-11-29T09:02:24.000000Z&quot;
+        },
+        {
+            &quot;uuid&quot;: &quot;5531ab81-0b9f-4fa1-a362-b297839d2cf0&quot;,
+            &quot;name&quot;: &quot;Muhammet&quot;,
+            &quot;last_name&quot;: &quot;İkizek&quot;,
+            &quot;company&quot;: &quot;Ssttech&quot;,
+            &quot;photo&quot;: &quot;http://localhost:8000/photo/Kbe6KvGUM6kqf9BPhiS8ZwGxTVmoxGwg8JYG3WAv.jpg&quot;,
+            &quot;created_at&quot;: &quot;2022-11-29T09:02:24.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-11-29T09:02:24.000000Z&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-contacts" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-contacts"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-contacts" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-contacts" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-contacts"></code></pre>
+</span>
+<form id="form-GETapi-contacts" data-method="GET"
+      data-path="api/contacts"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-contacts', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-contacts"
+                    onclick="tryItOut('GETapi-contacts');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-contacts"
+                    onclick="cancelTryOut('GETapi-contacts');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-contacts" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/contacts</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-contacts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-contacts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-contacts-getByLocation">GET api/contacts/getByLocation</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-contacts-getByLocation">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/contacts/getByLocation" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/contacts/getByLocation"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-contacts-getByLocation">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 57
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: 200,
+    &quot;data&quot;: [
+        {
+            &quot;İstanbul/&Ccedil;ekmek&ouml;y&quot;: [
+                {
+                    &quot;name&quot;: &quot;Taylor&quot;,
+                    &quot;last_name&quot;: &quot;Otwell&quot;
+                }
+            ]
+        },
+        {
+            &quot;İstanbul/Kadık&ouml;y&quot;: [
+                {
+                    &quot;name&quot;: &quot;Jeffrey&quot;,
+                    &quot;last_name&quot;: &quot;Way&quot;
+                }
+            ]
+        },
+        {
+            &quot;İstanbul/&Uuml;sk&uuml;dar&quot;: [
+                {
+                    &quot;name&quot;: &quot;Muhammet&quot;,
+                    &quot;last_name&quot;: &quot;İkizek&quot;
+                }
+            ]
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-contacts-getByLocation" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-contacts-getByLocation"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-contacts-getByLocation" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-contacts-getByLocation" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-contacts-getByLocation"></code></pre>
+</span>
+<form id="form-GETapi-contacts-getByLocation" data-method="GET"
+      data-path="api/contacts/getByLocation"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-contacts-getByLocation', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-contacts-getByLocation"
+                    onclick="tryItOut('GETapi-contacts-getByLocation');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-contacts-getByLocation"
+                    onclick="cancelTryOut('GETapi-contacts-getByLocation');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-contacts-getByLocation" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/contacts/getByLocation</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-contacts-getByLocation"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-contacts-getByLocation"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-GETapi-contacts-getLocationInfoReport">GET api/contacts/getLocationInfoReport</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-contacts-getLocationInfoReport">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/contacts/getLocationInfoReport" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/contacts/getLocationInfoReport"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-contacts-getLocationInfoReport">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 56
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: 200,
+    &quot;data&quot;: {
+        &quot;2&quot;: {
+            &quot;İstanbul/&Uuml;sk&uuml;dar&quot;: {
+                &quot;contact_count&quot;: 1,
+                &quot;phone_number_count&quot;: 1
+            }
+        },
+        &quot;1&quot;: {
+            &quot;İstanbul/Kadık&ouml;y&quot;: {
+                &quot;contact_count&quot;: 1,
+                &quot;phone_number_count&quot;: 1
+            }
+        },
+        &quot;0&quot;: {
+            &quot;İstanbul/&Ccedil;ekmek&ouml;y&quot;: {
+                &quot;contact_count&quot;: 1,
+                &quot;phone_number_count&quot;: 1
+            }
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-contacts-getLocationInfoReport" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-contacts-getLocationInfoReport"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-contacts-getLocationInfoReport" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-contacts-getLocationInfoReport" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-contacts-getLocationInfoReport"></code></pre>
+</span>
+<form id="form-GETapi-contacts-getLocationInfoReport" data-method="GET"
+      data-path="api/contacts/getLocationInfoReport"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-contacts-getLocationInfoReport', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-contacts-getLocationInfoReport"
+                    onclick="tryItOut('GETapi-contacts-getLocationInfoReport');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-contacts-getLocationInfoReport"
+                    onclick="cancelTryOut('GETapi-contacts-getLocationInfoReport');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-contacts-getLocationInfoReport" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/contacts/getLocationInfoReport</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-contacts-getLocationInfoReport"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-contacts-getLocationInfoReport"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-POSTapi-contacts">POST api/contacts</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-contacts">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/contacts" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "name=juoxdqdpduzrppmjeqdjdtlsbmfxxjxprkjgmirrwnvbnlka" \
+    --form "photo=@C:\Users\ikize\AppData\Local\Temp\php3E5C.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/contacts"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('name', 'juoxdqdpduzrppmjeqdjdtlsbmfxxjxprkjgmirrwnvbnlka');
+body.append('photo', document.querySelector('input[name="photo"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-contacts">
+</span>
+<span id="execution-results-POSTapi-contacts" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-contacts"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-contacts" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-contacts" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-contacts"></code></pre>
+</span>
+<form id="form-POSTapi-contacts" data-method="POST"
+      data-path="api/contacts"
+      data-authed="0"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-contacts', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-contacts"
+                    onclick="tryItOut('POSTapi-contacts');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-contacts"
+                    onclick="cancelTryOut('POSTapi-contacts');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-contacts" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/contacts</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-contacts"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-contacts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="name"                data-endpoint="POSTapi-contacts"
+               value="juoxdqdpduzrppmjeqdjdtlsbmfxxjxprkjgmirrwnvbnlka"
+               data-component="body">
+    <br>
+<p>Must be at least 3 characters. Example: <code>juoxdqdpduzrppmjeqdjdtlsbmfxxjxprkjgmirrwnvbnlka</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>photo</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+               name="photo"                data-endpoint="POSTapi-contacts"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\ikize\AppData\Local\Temp\php3E5C.tmp</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-GETapi-contacts--id-">GET api/contacts/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-contacts--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/contacts/ea8ec3fb-541a-451e-a9bb-54089a1ecf02" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/contacts/ea8ec3fb-541a-451e-a9bb-54089a1ecf02"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-contacts--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 55
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;status&quot;: 200,
+    &quot;data&quot;: {
+        &quot;uuid&quot;: &quot;ea8ec3fb-541a-451e-a9bb-54089a1ecf02&quot;,
+        &quot;name&quot;: &quot;Taylor&quot;,
+        &quot;last_name&quot;: &quot;Otwell&quot;,
+        &quot;company&quot;: &quot;Laravel&quot;,
+        &quot;photo&quot;: &quot;https://pbs.twimg.com/profile_images/1526762722565709824/avx6Gyol_400x400.jpg&quot;,
+        &quot;created_at&quot;: &quot;2022-11-29T09:02:24.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2022-11-29T09:02:24.000000Z&quot;,
+        &quot;information&quot;: {
+            &quot;phone_number&quot;: &quot;05431332491&quot;,
+            &quot;email_address&quot;: &quot;taylor@mail.com&quot;,
+            &quot;location&quot;: &quot;İstanbul/&Ccedil;ekmek&ouml;y&quot;,
+            &quot;content&quot;: null
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-contacts--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-contacts--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-contacts--id-" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-contacts--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-contacts--id-"></code></pre>
+</span>
+<form id="form-GETapi-contacts--id-" data-method="GET"
+      data-path="api/contacts/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-contacts--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-contacts--id-"
+                    onclick="tryItOut('GETapi-contacts--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-contacts--id-"
+                    onclick="cancelTryOut('GETapi-contacts--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-contacts--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/contacts/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-contacts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-contacts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id"                data-endpoint="GETapi-contacts--id-"
+               value="ea8ec3fb-541a-451e-a9bb-54089a1ecf02"
+               data-component="url">
+    <br>
+<p>The ID of the contact. Example: <code>ea8ec3fb-541a-451e-a9bb-54089a1ecf02</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-PUTapi-contacts--id-">PUT api/contacts/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-PUTapi-contacts--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://localhost/api/contacts/ea8ec3fb-541a-451e-a9bb-54089a1ecf02" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --form "name=zttvsfkozbsldfrqcgjrjztrdxhpmrjxnppuqbciredgpfyocveaxuuwntpsfvtlxggwmcbwcrwxpducmkyphk" \
+    --form "photo=@C:\Users\ikize\AppData\Local\Temp\php3EBB.tmp" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/contacts/ea8ec3fb-541a-451e-a9bb-54089a1ecf02"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+};
+
+const body = new FormData();
+body.append('name', 'zttvsfkozbsldfrqcgjrjztrdxhpmrjxnppuqbciredgpfyocveaxuuwntpsfvtlxggwmcbwcrwxpducmkyphk');
+body.append('photo', document.querySelector('input[name="photo"]').files[0]);
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTapi-contacts--id-">
+</span>
+<span id="execution-results-PUTapi-contacts--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-contacts--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-contacts--id-" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-PUTapi-contacts--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-contacts--id-"></code></pre>
+</span>
+<form id="form-PUTapi-contacts--id-" data-method="PUT"
+      data-path="api/contacts/{id}"
+      data-authed="0"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-contacts--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-contacts--id-"
+                    onclick="tryItOut('PUTapi-contacts--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-contacts--id-"
+                    onclick="cancelTryOut('PUTapi-contacts--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-contacts--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/contacts/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="PUTapi-contacts--id-"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="PUTapi-contacts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id"                data-endpoint="PUTapi-contacts--id-"
+               value="ea8ec3fb-541a-451e-a9bb-54089a1ecf02"
+               data-component="url">
+    <br>
+<p>The ID of the contact. Example: <code>ea8ec3fb-541a-451e-a9bb-54089a1ecf02</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="name"                data-endpoint="PUTapi-contacts--id-"
+               value="zttvsfkozbsldfrqcgjrjztrdxhpmrjxnppuqbciredgpfyocveaxuuwntpsfvtlxggwmcbwcrwxpducmkyphk"
+               data-component="body">
+    <br>
+<p>Must be at least 3 characters. Example: <code>zttvsfkozbsldfrqcgjrjztrdxhpmrjxnppuqbciredgpfyocveaxuuwntpsfvtlxggwmcbwcrwxpducmkyphk</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>photo</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+               name="photo"                data-endpoint="PUTapi-contacts--id-"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be an image. Must not be greater than 2048 kilobytes. Example: <code>C:\Users\ikize\AppData\Local\Temp\php3EBB.tmp</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-DELETEapi-contacts--id-">DELETE api/contacts/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-contacts--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/contacts/ea8ec3fb-541a-451e-a9bb-54089a1ecf02" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/contacts/ea8ec3fb-541a-451e-a9bb-54089a1ecf02"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-contacts--id-">
+</span>
+<span id="execution-results-DELETEapi-contacts--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-contacts--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-contacts--id-" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-contacts--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-contacts--id-"></code></pre>
+</span>
+<form id="form-DELETEapi-contacts--id-" data-method="DELETE"
+      data-path="api/contacts/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-contacts--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-contacts--id-"
+                    onclick="tryItOut('DELETEapi-contacts--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-contacts--id-"
+                    onclick="cancelTryOut('DELETEapi-contacts--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-contacts--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/contacts/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="DELETEapi-contacts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="DELETEapi-contacts--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id"                data-endpoint="DELETEapi-contacts--id-"
+               value="ea8ec3fb-541a-451e-a9bb-54089a1ecf02"
+               data-component="url">
+    <br>
+<p>The ID of the contact. Example: <code>ea8ec3fb-541a-451e-a9bb-54089a1ecf02</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-POSTapi-contacts--id--info-add">POST api/contacts/{id}/info/add</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-contacts--id--info-add">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/contacts/ea8ec3fb-541a-451e-a9bb-54089a1ecf02/info/add" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"phone_number\": \"quia\",
+    \"email_address\": \"csatterfield@example.net\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/contacts/ea8ec3fb-541a-451e-a9bb-54089a1ecf02/info/add"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "phone_number": "quia",
+    "email_address": "csatterfield@example.net"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-contacts--id--info-add">
+</span>
+<span id="execution-results-POSTapi-contacts--id--info-add" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-contacts--id--info-add"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-contacts--id--info-add" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-contacts--id--info-add" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-contacts--id--info-add"></code></pre>
+</span>
+<form id="form-POSTapi-contacts--id--info-add" data-method="POST"
+      data-path="api/contacts/{id}/info/add"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-contacts--id--info-add', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-contacts--id--info-add"
+                    onclick="tryItOut('POSTapi-contacts--id--info-add');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-contacts--id--info-add"
+                    onclick="cancelTryOut('POSTapi-contacts--id--info-add');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-contacts--id--info-add" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/contacts/{id}/info/add</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-contacts--id--info-add"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-contacts--id--info-add"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id"                data-endpoint="POSTapi-contacts--id--info-add"
+               value="ea8ec3fb-541a-451e-a9bb-54089a1ecf02"
+               data-component="url">
+    <br>
+<p>The ID of the contact. Example: <code>ea8ec3fb-541a-451e-a9bb-54089a1ecf02</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="phone_number"                data-endpoint="POSTapi-contacts--id--info-add"
+               value="quia"
+               data-component="body">
+    <br>
+<p>Example: <code>quia</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email_address</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="email_address"                data-endpoint="POSTapi-contacts--id--info-add"
+               value="csatterfield@example.net"
+               data-component="body">
+    <br>
+<p>Must be a valid email address. Example: <code>csatterfield@example.net</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-DELETEapi-contact-info--id-">DELETE api/contact/info/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-DELETEapi-contact-info--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost/api/contact/info/dolorem" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/contact/info/dolorem"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-contact-info--id-">
+</span>
+<span id="execution-results-DELETEapi-contact-info--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-contact-info--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-contact-info--id-" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-contact-info--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-contact-info--id-"></code></pre>
+</span>
+<form id="form-DELETEapi-contact-info--id-" data-method="DELETE"
+      data-path="api/contact/info/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-contact-info--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-contact-info--id-"
+                    onclick="tryItOut('DELETEapi-contact-info--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-contact-info--id-"
+                    onclick="cancelTryOut('DELETEapi-contact-info--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-contact-info--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/contact/info/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="DELETEapi-contact-info--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="DELETEapi-contact-info--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id"                data-endpoint="DELETEapi-contact-info--id-"
+               value="dolorem"
+               data-component="url">
+    <br>
+<p>The ID of the info. Example: <code>dolorem</code></p>
+            </div>
+                    </form>
+
+            
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>

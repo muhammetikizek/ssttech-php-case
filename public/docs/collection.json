@@ -1,0 +1,526 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "ab69d5ae-66d3-42f1-b002-802fe4fc0c15",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "GET api\/heartbeat",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/heartbeat",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/heartbeat"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "59"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":true,\"version\":\"9.41.0\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/contacts",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/contacts",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/contacts"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "58"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":200,\"data\":[{\"uuid\":\"ea8ec3fb-541a-451e-a9bb-54089a1ecf02\",\"name\":\"Taylor\",\"last_name\":\"Otwell\",\"company\":\"Laravel\",\"photo\":\"https:\\\/\\\/pbs.twimg.com\\\/profile_images\\\/1526762722565709824\\\/avx6Gyol_400x400.jpg\",\"created_at\":\"2022-11-29T09:02:24.000000Z\",\"updated_at\":\"2022-11-29T09:02:24.000000Z\"},{\"uuid\":\"dc36adb3-fa74-42a7-a59a-f87edea5b4ee\",\"name\":\"Jeffrey\",\"last_name\":\"Way\",\"company\":\"Laracast\",\"photo\":\"https:\\\/\\\/pbs.twimg.com\\\/profile_images\\\/1179539487086514177\\\/cl6UdqIS_400x400.jpg\",\"created_at\":\"2022-11-29T09:02:24.000000Z\",\"updated_at\":\"2022-11-29T09:02:24.000000Z\"},{\"uuid\":\"5531ab81-0b9f-4fa1-a362-b297839d2cf0\",\"name\":\"Muhammet\",\"last_name\":\"\\u0130kizek\",\"company\":\"Ssttech\",\"photo\":\"http:\\\/\\\/localhost:8000\\\/photo\\\/Kbe6KvGUM6kqf9BPhiS8ZwGxTVmoxGwg8JYG3WAv.jpg\",\"created_at\":\"2022-11-29T09:02:24.000000Z\",\"updated_at\":\"2022-11-29T09:02:24.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/contacts\/getByLocation",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/contacts\/getByLocation",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/contacts\/getByLocation"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "57"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":200,\"data\":[{\"\\u0130stanbul\\\/\\u00c7ekmek\\u00f6y\":[{\"name\":\"Taylor\",\"last_name\":\"Otwell\"}]},{\"\\u0130stanbul\\\/Kad\\u0131k\\u00f6y\":[{\"name\":\"Jeffrey\",\"last_name\":\"Way\"}]},{\"\\u0130stanbul\\\/\\u00dcsk\\u00fcdar\":[{\"name\":\"Muhammet\",\"last_name\":\"\\u0130kizek\"}]}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/contacts\/getLocationInfoReport",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/contacts\/getLocationInfoReport",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/contacts\/getLocationInfoReport"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "56"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":200,\"data\":{\"2\":{\"\\u0130stanbul\\\/\\u00dcsk\\u00fcdar\":{\"contact_count\":1,\"phone_number_count\":1}},\"1\":{\"\\u0130stanbul\\\/Kad\\u0131k\\u00f6y\":{\"contact_count\":1,\"phone_number_count\":1}},\"0\":{\"\\u0130stanbul\\\/\\u00c7ekmek\\u00f6y\":{\"contact_count\":1,\"phone_number_count\":1}}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/contacts",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/contacts",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/contacts"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "juoxdqdpduzrppmjeqdjdtlsbmfxxjxprkjgmirrwnvbnlka",
+                                    "type": "text",
+                                    "description": "Must be at least 3 characters."
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/contacts\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/contacts\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/contacts\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "ea8ec3fb-541a-451e-a9bb-54089a1ecf02",
+                                    "description": "The ID of the contact."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "55"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"status\":200,\"data\":{\"uuid\":\"ea8ec3fb-541a-451e-a9bb-54089a1ecf02\",\"name\":\"Taylor\",\"last_name\":\"Otwell\",\"company\":\"Laravel\",\"photo\":\"https:\\\/\\\/pbs.twimg.com\\\/profile_images\\\/1526762722565709824\\\/avx6Gyol_400x400.jpg\",\"created_at\":\"2022-11-29T09:02:24.000000Z\",\"updated_at\":\"2022-11-29T09:02:24.000000Z\",\"information\":{\"phone_number\":\"05431332491\",\"email_address\":\"taylor@mail.com\",\"location\":\"\\u0130stanbul\\\/\\u00c7ekmek\\u00f6y\",\"content\":null}}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "PUT api\/contacts\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/contacts\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/contacts\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "ea8ec3fb-541a-451e-a9bb-54089a1ecf02",
+                                    "description": "The ID of the contact."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "zttvsfkozbsldfrqcgjrjztrdxhpmrjxnppuqbciredgpfyocveaxuuwntpsfvtlxggwmcbwcrwxpducmkyphk",
+                                    "type": "text",
+                                    "description": "Must be at least 3 characters."
+                                },
+                                {
+                                    "key": "photo",
+                                    "src": [],
+                                    "type": "file"
+                                },
+                                {
+                                    "key": "_method",
+                                    "value": "PUT",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/contacts\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/contacts\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/contacts\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "ea8ec3fb-541a-451e-a9bb-54089a1ecf02",
+                                    "description": "The ID of the contact."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "POST api\/contacts\/{id}\/info\/add",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/contacts\/:id\/info\/add",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/contacts\/:id\/info\/add",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "ea8ec3fb-541a-451e-a9bb-54089a1ecf02",
+                                    "description": "The ID of the contact."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"phone_number\":\"quia\",\"email_address\":\"csatterfield@example.net\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/contact\/info\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/contact\/info\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/contact\/info\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "dolorem",
+                                    "description": "The ID of the info."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
